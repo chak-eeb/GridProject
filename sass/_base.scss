@@ -38,5 +38,18 @@ body {
 .container {
 	display: grid;
 	grid-template-rows: 80vh min-content 40vw repeat(3, min-content);
-	grid-template-columns: 8rem 1fr repeat(8, minmax(min-content, 14rem)) 1fr; //the two 1fr are added to center the 8 elements
+	grid-template-columns:
+		[sidebar-start] 8rem [sidebar-end full-start] minmax(
+			6rem,
+			1fr
+		) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end])
+		[center-end] minmax(
+			6rem,
+			1fr
+		) [full-end]; //the two 1fr are added to center the 8 elements
+
+	& > * {
+		padding: 40px;
+		font-size: 3rem;
+	}
 }
